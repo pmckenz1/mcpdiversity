@@ -5,7 +5,7 @@ Version: 0.0.0.9000
 Date: 2017-03-28
 Author: Patrick McKenzie
 Maintainer: Patrick McKenzie <pmckenz1@utk.edu>
-Description: Contains tools to calculate rates of fluorescence/color change, calibrate those rates, and plot data. So far I'm in ad-hoc development mode. 
+Description: Contains tools for solving MCP problems based on common measures of ecological diversity. 
 License: CC0
 Encoding: UTF-8
 LazyData: true
