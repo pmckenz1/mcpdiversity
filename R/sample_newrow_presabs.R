@@ -29,6 +29,14 @@ sample_newrow_presabs <- function(sharedmatrix,nsamples=10000,startingmatrix=NUL
 whichrow <- nrow(currentmatrix) + 1
 currentmatrix <- t(apply(currentmatrix,1,c,rep(0,sharedmatrix[whichrow,whichrow])))
 
+score.new.row <- function(newrow,matrix) {
+  scores<-integer(0)
+  for (i in 1:nrow(matrix)) {
+    scores<-c(scores,abs(sharedmatrix[i,whichrow] - sum(colSums(rbind(newrow,matrix[i,]))>1)))
+  }
+  scores
+}
+
 scores_rows <- integer(0)
 columns <- ncol(currentmatrix)
 for (i in 1:nsamples) {
@@ -38,7 +46,7 @@ othersites <- rep(0,(columns-sharedmatrix[1,1]))
 othersites[sample((columns-sharedmatrix[1,1]),(sharedmatrix[whichrow,whichrow]-sharedmatrix[1,whichrow]))] <- 1
 
 poss.new.row<-c(firstsite,othersites)
-score.and.row <- c(sum(score.new.rew(poss.new.row,currentmatrix)),poss.new.row)
+score.and.row <- c(sum(score.new.row(poss.new.row,currentmatrix)),poss.new.row)
 
 scores_rows <- rbind(scores_rows,score.and.row)
 print(paste0(i,", ncol is: ",columns))
