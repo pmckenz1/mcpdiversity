@@ -94,7 +94,7 @@ for (i in 1:length(partitions)) {
 else {
   for (i in 1:length(partitions)) {
     if (length(partitions[[i]]) > 1) {
-      scores_rows[partitions[[i]]] <- t(apply(scores_rows[partitions[[i]]],1,sort,decreasing = TRUE))
+      scores_rows[partitions[[i]]] <- sort(scores_rows[partitions[[i]]],decreasing = TRUE)
     }
   }
 }
