@@ -22,6 +22,7 @@ sample_newrow_presabs <- function(sharedmatrix,nsamples=10000,startingmatrix=NUL
     if (shared22 > shared12) {
       startingmatrix[2,(shared11+1):((shared11)+(shared22-shared12))]<- 1
     }
+    currentmatrix <- startingmatrix
   }
   else {
     currentmatrix <- startingmatrix
