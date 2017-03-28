@@ -54,13 +54,13 @@ print(paste0(i,", ncol is: ",columns))
 }
 #then reduce to lowest scores
 scores_rows <- scores_rows[scores_rows[,1]==min(scores_rows[,1]),]
-if (!is.null(nrow(scores_rows))) {
+if (is.null(nrow(scores_rows))) {
+  dim(scores_rows) <- c(1,length(scores_rows))
+}
+
 print(paste0("Lowest row score is: ",scores_rows[1,1]))
-}
-else {
-  print(paste0("Lowest row score is: ",scores_rows[1]))
-}
 scores_rows <- scores_rows[,-1]
+
 #then sort within partition
 i <- 2
 partition <- 1
