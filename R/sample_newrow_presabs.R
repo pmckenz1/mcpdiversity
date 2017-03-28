@@ -84,7 +84,7 @@ while (i <= ncol(currentmatrix)) {
   q <- q+1
 }
 
-if (nrow(scores_rows) >1 ) {
+if (is.null(nrow(scores_rows))) {
 for (i in 1:length(partitions)) {
   if (length(partitions[[i]]) > 1) {
     scores_rows[,partitions[[i]]] <- t(apply(scores_rows[,partitions[[i]]],1,sort,decreasing = TRUE))
