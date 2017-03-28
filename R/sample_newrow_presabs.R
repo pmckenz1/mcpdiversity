@@ -84,11 +84,21 @@ while (i <= ncol(currentmatrix)) {
   q <- q+1
 }
 
+if (nrow(scores_rows) >1 ) {
 for (i in 1:length(partitions)) {
   if (length(partitions[[i]]) > 1) {
-    vector.to.row(scores_rows[,partitions[[i]]]) <- t(apply(vector.to.row(scores_rows[,partitions[[i]]]),1,sort,decreasing = TRUE))
+    scores_rows[,partitions[[i]]] <- t(apply(scores_rows[,partitions[[i]]],1,sort,decreasing = TRUE))
   }
 }
+}
+else {
+  for (i in 1:length(partitions)) {
+    if (length(partitions[[i]]) > 1) {
+      scores_rows[partitions[[i]]] <- t(apply(scores_rows[partitions[[i]]],1,sort,decreasing = TRUE))
+    }
+  }
+}
+scores_rows <- vector.to.row(scores_rows) # making this a row again just in case
 #then knock out the identical ones
 newrows <- unique(split(as.matrix(scores_rows),row(scores_rows)))
 newmatrices <- list()
