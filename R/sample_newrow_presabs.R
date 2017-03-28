@@ -63,7 +63,7 @@ print(paste0(i,", ncol is: ",columns))
 #then reduce to lowest scores
 scores_rows <- scores_rows[scores_rows[,1]==min(scores_rows[,1]),]
 
-vector.to.row(scores_rows) #this makes sure our object is of rows, even if there's just one...
+scores_rows <- vector.to.row(scores_rows) #this makes sure our object is of rows, even if there's just one...
 
 print(paste0("Lowest row score is: ",scores_rows[1,1]))
 scores_rows <- scores_rows[,-1]
