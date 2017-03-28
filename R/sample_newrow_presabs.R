@@ -86,7 +86,7 @@ while (i <= ncol(currentmatrix)) {
 
 for (i in 1:length(partitions)) {
   if (length(partitions[[i]]) > 1) {
-    scores_rows[,partitions[[i]]] <- t(apply(vector.to.row(scores_rows[,partitions[[i]]]),1,sort,decreasing = TRUE))
+    vector.to.row(scores_rows[,partitions[[i]]]) <- t(apply(vector.to.row(scores_rows[,partitions[[i]]]),1,sort,decreasing = TRUE))
   }
 }
 #then knock out the identical ones
