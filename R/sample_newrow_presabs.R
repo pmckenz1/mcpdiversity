@@ -54,8 +54,8 @@ print(paste0(i,", ncol is: ",columns))
 }
 #then reduce to lowest scores
 scores_rows <- scores_rows[scores_rows[,1]==min(scores_rows[,1]),]
-if (is.null(nrow(scores_rows))) {
-  dim(scores_rows) <- c(1,length(scores_rows))
+if (is.null(nrow(scores_rows))) { 
+  dim(scores_rows) <- c(1,length(scores_rows)) # making sure we have the right dimensions
 }
 
 print(paste0("Lowest row score is: ",scores_rows[1,1]))
@@ -75,6 +75,9 @@ while (i <= ncol(currentmatrix)) {
   partition <- i # set the new starting value for next partition
   i <- i+1 # set new i
   q <- q+1
+}
+if (is.null(nrow(scores_rows))) { # making sure we have the right dimensions.
+  dim(scores_rows) <- c(1,length(scores_rows))
 }
 for (i in 1:length(partitions)) {
   if (length(partitions[[i]]) > 1) {
