@@ -1,0 +1,66 @@
+---
+title: "`mcpdiversity` Vignette"
+author: "Patrick McKenzie"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mcpiversityVignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The `mcpdiversity package` provides tools for making maximum coverage selections based on:
+
+1)  alpha and beta diversity values, and
+2)  presence/absence matrices
+
+## Table of Contents
+
+*  Background
+*  Workflow
+*  Functions
+
+## Background
+
+I built these tools for my undergraduate thesis, where I want to tie ecological properties of sites (useful for predicting alpha diversity within sites and beta diversity between sites) to selections made in a maximum coverage problem.
+
+#### Maximum coverage problem
+
+Given a presence/absence table that tells which species are within which sites, what is the best way to pick *X* number of sites so that we include the most species?
+
+#### Application
+
+Alpha and beta diversity values for sites can be predicted by the ecological properties of those sites. This package presents tools for making maximum coverage selections based on alpha and beta diversity values alone.
+
+## Workflow
+
+*  Start with a matrix of shared number of species that includes alpha values along the diagonal and pairwise values of shared species in each cell.
+*  Convert this table to a presence/absence matrix.
+*  Solve for maximum coverage using exhaustive delineation or rarity-weighted richness.
+
+## Functions
+
+#### Core functions
+
+*  `produce_presabs_matrix()`
+    *  Produces a presence/absence matrix from alpha and pairwise-beta diversity values.
+*  `compute_rwr()`
+    *  Produces mcp solutions for presence/absence matrices by a heuristic, rarity-weighted richness.
+*  `opt_across_sites_df()`
+    *  Produces mcp solutions for presence/absence matrices by exhaustive delineation
+    *  Works well for **small** presence/absence matrices, but gets really messy really quickly as they get bigger.
+
+#### Less core functions
+
+*  `simulate_presabs_matrix()`
+    *  Useful for simulation/testing
+*  `make_shared_sp_matrix()`
+    *  Useful for simulation/testing
+*  `sample_newrow_presabls()`
+    *  Internal for `produce_presabs_matrix()`
+
+
+
+
+
+
