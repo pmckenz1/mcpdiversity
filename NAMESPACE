@@ -2,5 +2,6 @@
 
 export(make_shared_sp_matrix)
 export(opt_across_sites_df)
+export(produce_presabs_matrix)
 export(sample_newrow_presabs)
 export(simulate_presabs_matrix)

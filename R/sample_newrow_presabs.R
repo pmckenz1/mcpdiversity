@@ -58,7 +58,7 @@ poss.new.row<-c(firstsite,othersites)
 score.and.row <- c(sum(score.new.row(poss.new.row,currentmatrix)),poss.new.row)
 
 scores_rows <- rbind(scores_rows,score.and.row)
-print(paste0(i,", ncol is: ",columns))
+print(paste0(i,", nrow is ",whichrow," ncol is: ",columns))
 }
 #then reduce to lowest scores
 scores_rows <- scores_rows[scores_rows[,1]==min(scores_rows[,1]),]
