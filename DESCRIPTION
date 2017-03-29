@@ -8,5 +8,5 @@ Maintainer: Patrick McKenzie <pmckenz1@utk.edu>
 Description: Contains tools for solving MCP problems based on common measures of ecological diversity. 
 License: CC0
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 RoxygenNote: 6.0.1
