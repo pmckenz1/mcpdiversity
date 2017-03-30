@@ -8,6 +8,7 @@ compute_rwr <- function(data,nselect) {
 ### RWR - rarity weighted richness ala Albuquerque and Beier 2016 ###
   # code based on that in a script by Heather Jackson
 # first calculate number of sites in which each species occurs (i.e. sum across rows)
+data <- as.matrix(data)
 if (is.null(rownames(data))) {
   stop("Your row names need to be labeled!")
 }
@@ -21,7 +22,7 @@ nsites2 <- nsites[!(nsites == 0)]
 rarity <- 1/nsites2
 
 # next calculate rarity weighted richness (sum rarity scores of species within a site)
-raritymat <- data.frame(mapply(`*`,data2,rarity)) #this multiplies columns by the rarity of that species
+raritymat <- data2 %*% diag(rarity) #this multiplies columns by the rarity of that species
 rwr <- apply(raritymat,1,sum)
 rwrdf <- cbind.data.frame(rownames(data),rwr)
 rwrdf <- rwrdf[order(as.numeric(as.character(rwrdf[,2])),decreasing = TRUE),]
